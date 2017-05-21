@@ -1,10 +1,10 @@
-# Tietokantasovelluksen esittelysivu
+﻿# Tietokantasovelluksen esittelysivu
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://havarto.users.cs.helsinki.fi/tsoha)
+* [Linkki dokumentaatiooni](https://github.com/arhaver/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Tenttiinlukusunnitelman tekopalvelu. Palveluun syötetään tiedot tenttimateriaaleista ja tentin päivämäärä, mistä palvelu laskee tarvittavan keskimääräisen päivittäisen lukumäärän. Työ muistuttaa aihe-ehdotusta muistilista. [linkki muistilistaan](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
