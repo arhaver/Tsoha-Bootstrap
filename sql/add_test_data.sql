@@ -12,9 +12,9 @@ INSERT INTO Material (topic, writer, kind, publication, published) VALUES ('Test
 INSERT INTO Material (topic) VALUES ('Tentti Kirja 1');
 
 -- ExamMaterial-taulun testidata
-INSERT INTO Material (exam, material, limitation, pages) VALUES (1, 2, 'Sivut 35-97', 63);
-INSERT INTO Material (exam, material, pages) VALUES (2, 1, 15);
+INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (1, 2, 'Sivut 35-97', 63);
+INSERT INTO ExamMaterial (exam, material, pages) VALUES (2, 1, 15);
 
 -- Testee-taulun testidata
-INSERT INTO Material (exam, person) VALUES (1, 2);
-INSERT INTO Material (exam, person) VALUES (2, 1);
+INSERT INTO Testee (exam, person) VALUES (1, 2);
+INSERT INTO Testee (exam, person) VALUES (2, 1);
