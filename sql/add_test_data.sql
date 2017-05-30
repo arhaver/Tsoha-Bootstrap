@@ -10,7 +10,3 @@ INSERT INTO Exam (topic, testdate, testtime, room, tester) VALUES ('TestiTesti2'
 -- Material-taulun testidata
 INSERT INTO Material (topic, writer, kind, publication, published) VALUES ('Testauksen ABC', 'Toimi Toimittaja', 'Artikkeli', 'Testaus raamaattu', 2014);
 INSERT INTO Material (topic) VALUES ('Tentti Kirja 1');
-
--- ExamMaterial-taulun testidata
-INSERT INTO ExamMaterial (limitation, pages) VALUES ('Sivut 35-97', 63);
-INSERT INTO ExamMaterial (pages) VALUES (15);
