@@ -22,7 +22,7 @@ CREATE TABLE Material(
     writer varchar(120),
     kind varchar(25),
     publication varchar(120),
-    published YEAR
+    published INTEGER
 );
 
 CREATE TABLE ExamMaterial(
