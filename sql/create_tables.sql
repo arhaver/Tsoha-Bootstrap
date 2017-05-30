@@ -2,7 +2,7 @@
 CREATE TABLE Person(
     id SERIAL PRIMARY KEY,
     name varchar(25) NOT NULL,
-    password varchar(25) NOT NULL,
+    password varchar(25) NOT NULL
 );
 
 CREATE TABLE Exam(
@@ -22,7 +22,7 @@ CREATE TABLE Material(
     writer varchar(120),
     kind varchar(25),
     publication varchar(120),
-    published YEAR,
+    published YEAR
 );
 
 CREATE TABLE ExamMaterial(
