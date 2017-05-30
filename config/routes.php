@@ -23,3 +23,7 @@ $routes->get('/exam/1/edit', function() {
 $routes->get('/login', function() {
   HelloWorldController::login();
 });
+
+$routes->get('/testindex', function() {
+  HelloWorldController::test_index();
+});
