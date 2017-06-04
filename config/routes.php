@@ -9,11 +9,11 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/exam', function() {
-    ExamController::index();
+    ExamController::exams();
 });
 
-$routes->get('/exam/1', function() {
-    HelloWorldController::exam_show();
+$routes->get('/exam/:id', function($id) {
+    ExamController::show($id);
 });
 
 $routes->get('/exam/1/edit', function() {
