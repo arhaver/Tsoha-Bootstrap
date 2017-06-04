@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tentti esimerkki 1</h1>
+<!-- Painikkeet tähän -->
+<p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>PVM:</strong> 5.6.2017</li>
+    <li><strong>Paikka:</strong> </li>
+    <li><strong>Vastuuhenkilö:</strong> Leena Luennoitsija</li>
+</ul>
+<!-- Tenttimateriaalien yksityiskohtainen listaus tähän -->
+<p>
+    Luento materiaali, Leena Luennoitsija, 55 sivua.<br>
+    Kurssikirja, Kirjailija Kai, Otava, luvut 1-3, 30 sivua.<br>
+    Toinen kirja, Rustaaja Riina ja Skriivaaja Tino, Tietokirjat, sivut 34-96, 63 sivua.
+</p>
+{% endblock %}
