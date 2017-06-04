@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Käyttäjän Arto tentit</h1>
+
+<p>
+    <a href="#" class="btn btn-success">Lisää tentti</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Aika</th>
+            <th>Paikka</th>
+            <th>Materiaalit</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Listataan Tentit tähän -->
+        <tr>
+            <td><a href="#">Tentti esimerkki 1</a></td>
+            <td>5.6.2017</td>
+            <td></td>
+            <td><ul>
+                    <li>Luento Materiaali</li>
+                    <li>Kurssikirja</li>
+                    <li>Toinen kirja</li>
+                </ul>
+            </td>
+            <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
