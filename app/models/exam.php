@@ -12,7 +12,7 @@ class Exam extends BaseModel {
         $query = DB::connection()->prepare('SELECT * FROM Exam');
         $query->execute();
         $rows = $query->fetchAll();
-        $games = array();
+        $exams = array();
 
         foreach ($rows as $row) {
             $exams[] = new Exam(array(
@@ -49,8 +49,8 @@ class Exam extends BaseModel {
 
             return $exam;
         }
-        
+
         return null;
     }
-    
+
 }

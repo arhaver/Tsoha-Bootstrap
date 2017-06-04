@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/game.php';
+require 'app/models/exam.php';
 
 class HelloWorldController extends BaseController {
 

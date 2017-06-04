@@ -9,21 +9,21 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/exam', function() {
-  HelloWorldController::exam_list();
+    HelloWorldController::exam_list();
 });
 
 $routes->get('/exam/1', function() {
-  HelloWorldController::exam_show();
+    HelloWorldController::exam_show();
 });
 
 $routes->get('/exam/1/edit', function() {
-  HelloWorldController::exam_edit();
+    HelloWorldController::exam_edit();
 });
 
 $routes->get('/login', function() {
-  HelloWorldController::login();
+    HelloWorldController::login();
 });
 
 $routes->get('/testindex', function() {
-  HelloWorldController::test_index();
+    HelloWorldController::test_index();
 });
