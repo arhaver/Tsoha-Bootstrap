@@ -11,11 +11,11 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        $skyrim = Game::find(1);
-        $games = Game::all();
+        $esimtest = Exam::find(1);
+        $exams = Exam::all();
         // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($games);
-        Kint::dump($skyrim);
+        Kint::dump($exams);
+        Kint::dump($esimtest);
     }
 
     public static function exam_list() {
