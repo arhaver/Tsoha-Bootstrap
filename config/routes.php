@@ -9,7 +9,7 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/exam', function() {
-    HelloWorldController::exam_list();
+    ExamController::index();
 });
 
 $routes->get('/exam/1', function() {
