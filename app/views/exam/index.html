@@ -21,7 +21,7 @@
         <!-- Listataan Tentit tähän -->
       {% for exam in exams %}
         <tr>
-            <td><a href="{{base_path}}/exam/{{exam.id}}">{{exam.name}}</a></td>
+            <td><a href="{{base_path}}/exam/{{exam.id}}">{{exam.topic}}</a></td>
             <td>{{exam.testdate}}</td>
             <td>{{exam.testtime}}</td>
             <td><ul>
