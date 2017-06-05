@@ -12,6 +12,14 @@ $routes->get('/exam', function() {
     ExamController::exams();
 });
 
+$routes->post('/exam', function() {
+    ExamController::store();
+});
+
+$routes->get('/exam/new', function() {
+    ExamController::create();
+});
+
 $routes->get('/exam/:id', function($id) {
     ExamController::show($id);
 });
