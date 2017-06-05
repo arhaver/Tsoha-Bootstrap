@@ -17,7 +17,7 @@ class ExamController extends BaseController{
         $exam = new Exam(array(
             'topic' => $params['topic'],
             'testdate' => $params['testdate'],
-            'testtime' => $params[''],
+            'testtime' => $params['testtime'],
             'room' => $params['room'],
             'tester' => $params['tester']
         ));
