@@ -9,11 +9,13 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        $esimtest = Exam::find(1);
-        $exams = Exam::all();
-        // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($exams);
-        Kint::dump($esimtest);
+        $test = new Exam(array(
+            'topic' = 'a',
+            'testdate' = '18/07/2017'
+        ));
+        $errors = $test->errors();
+        
+        Kint::dump($errors)
     }
 
     public static function exam_list() {

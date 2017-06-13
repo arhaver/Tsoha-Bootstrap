@@ -6,6 +6,7 @@ class Exam extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_topic');
     }
 
     public static function all() {
@@ -58,6 +59,20 @@ class Exam extends BaseModel {
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester));
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+    
+    public function validate_topic(){
+        $errors = array();
+        $topic_length = 3;
+        
+        if(parent::string_is_empty($this->topic)){
+            $errors[] = 'Nimi ei saa olla tyhjä!';
+        }
+        if(!parent::validate_string_length($this->topic, $topic_length)){
+            $errors[] = 'Nimen pitää olla vähintään ' .$topic_length. ' merkkiä!';
+        }
+        
+        return $errors;
     }
 
 }
