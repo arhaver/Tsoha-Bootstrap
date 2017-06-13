@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
-<h1>{{attribute.topic}}</h1>
+<h1>{{exam.topic}}</h1>
 <!-- Painikkeet tähän -->
 <p>
-    {{forms.destroy_button("#{base_path}/game/#{attribute.id}/destroy")}} 
-    <a href="{{base_path}}/exam/{{attribute.id}}/edit" class="btn btn-default">Muokkaa</a>
+    {{forms.destroy_button("#{base_path}/game/#{exam.id}/destroy")}} 
+    <a href="{{base_path}}/exam/{{exam.id}}/edit" class="btn btn-default">Muokkaa</a>
 </p>
 <!-- Tiedot tulee listana tähän -->
 <ul>
-    <li><strong>PVM:</strong> {{attribute.testdate}} {{attribute.testtime}}</li>
-    <li><strong>Paikka:</strong> {{attribute.room}}</li>
-    <li><strong>Vastuuhenkilö:</strong> {{attribute.tester}}</li>
+    <li><strong>PVM:</strong> {{exam.testdate}} {{exam.testtime}}</li>
+    <li><strong>Paikka:</strong> {{exam.room}}</li>
+    <li><strong>Vastuuhenkilö:</strong> {{exam.tester}}</li>
 </ul>
 <!-- Tenttimateriaalien yksityiskohtainen listaus tähän -->
 <p>

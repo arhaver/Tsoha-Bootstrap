@@ -19,18 +19,18 @@
 
     <tbody>
         <!-- Listataan Tentit tähän -->
-      {% for attribute in attributes %}
+      {% for exam in exams %}
         <tr>
-            <td><a href="{{base_path}}/exam/{{attribute.id}}">{{attribute.topic}}</a></td>
-            <td>{{attribute.testdate}}</td>
-            <td>{{attribute.testtime}}</td>
+            <td><a href="{{base_path}}/exam/{{exam.id}}">{{exam.topic}}</a></td>
+            <td>{{exam.testdate}}</td>
+            <td>{{exam.testtime}}</td>
             <td><ul>
                     <li>Luento Materiaali</li>
                     <li>Kurssikirja</li>
                     <li>Toinen kirja</li>
                 </ul>
             </td>
-            <th><a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{attribute.id}}/edit">Muokkaa</a></th>
+            <th><a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{exam.id}}/edit">Muokkaa</a></th>
         </tr>
       {% endfor %}
     </tbody>
