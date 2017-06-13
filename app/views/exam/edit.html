@@ -12,7 +12,7 @@
 </div>
 {% endif %}
 
-<form method="post" action="{{base_path}}/exam">
+<form method="post" action="{{base_path}}/exam/{{exam.id}}/edit">
     <div class="form-group">
         <label>Nimi</label>
         <input type="text" name="topic" class="form-control" value="{{exam.topic}}">
