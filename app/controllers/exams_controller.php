@@ -50,17 +50,18 @@ class ExamController extends BaseController{
             'room' => $params['room'],
             'tester' => $params['tester']
         ));
+        Kint::dump($params);
         
         $exam = new Exam($attributes);
         $errors = $exam->errors();
         
-        if(count($errors) == 0){
+/*        if(count($errors) == 0){
             $exam->update();
         
             Redirect::to('/exam/' . $exam->id, array('message' => 'Tenttiä muokattu onnistuneesti!'));
         } else{
             View::make('exam/edit.html', array('errors' => $errors, 'attributes' => $attributes));
-        }
+        }*/
     }
     
     public static function destroy($id){
