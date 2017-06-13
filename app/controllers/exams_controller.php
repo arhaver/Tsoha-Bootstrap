@@ -14,7 +14,7 @@ class ExamController extends BaseController{
     public static function store() {
         $params = $_POST;
         
-        $exam = new Exam(array(
+        $attributes = (array(
             'topic' => $params['topic'],
             'testdate' => $params['testdate'],
             'testtime' => $params['testtime'],
@@ -22,9 +22,16 @@ class ExamController extends BaseController{
             'tester' => $params['tester']
         ));
         
-        $exam->save();
+        $exam = new Exam($attributes);
+        $errors = $exam->errors();
         
-        Redirect::to('/exam/' . $exam->id, array('message' => 'Tentti on lisätty kirjastoosi!'));
+        if(count($errors) == 0){
+            $exam->save();
+        
+            Redirect::to('/exam/' . $exam->id, array('message' => 'Tentti on lisätty kirjastoosi!'));
+        } else{
+            View::make('game/new.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 
     public static function create() {

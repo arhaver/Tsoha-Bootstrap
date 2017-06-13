@@ -2,31 +2,41 @@
 {% block content %}
 <h1>Lisää uusi tentti</h1>
 
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 <form method="post" action="{{base_path}}/exam">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" name="topic" class="form-control">
+        <input type="text" name="topic" class="form-control" value="{{attributes.topic}}">
     </div>
     <div class="form-group">
         <label>PVM (d/m/yyyy)</label>
-        <input type="text" name="testdate" class="form-control">
+        <input type="text" name="testdate" class="form-control" value="{{attributes.testdate}}">
     </div>
     <div class="form-group">
         <label>Aika</label>
-        <input type="text" name="testtime" class="form-control">
+        <input type="text" name="testtime" class="form-control" value="{{attributes.testtime}}">
     </div>
     <div class="form-group">
         <label>Paikka</label>
-        <input type="text" name="room" class="form-control">
+        <input type="text" name="room" class="form-control" value="{{attributes.room}}">
     </div>
     <div class="form-group">
         <label>Vastuuhenkilö</label>
-        <input type="text" name="tester" class="form-control">
+        <input type="text" name="tester" class="form-control" value="{{attributes.tster}}">
     </div>
-<!--    <div class="form-group">
-        <label>Materiaalit</label>
-        <textarea name="ExamMaterial" class="form-control"></textarea>
-    </div> -->
+    <!--    <div class="form-group">
+            <label>Materiaalit</label>
+            <textarea name="ExamMaterial" class="form-control"></textarea>
+        </div> -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
