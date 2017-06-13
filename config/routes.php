@@ -44,6 +44,6 @@ $routes->post('/exam/:id/edit', function($id) {
     ExamController::update($id);
 });
 
-$routes->get('/exam/:id/destroy', function($id) {
+$routes->post('/exam/:id/destroy', function($id) {
     ExamController::destroy($id);
 });
