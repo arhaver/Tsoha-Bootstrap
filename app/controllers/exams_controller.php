@@ -30,7 +30,7 @@ class ExamController extends BaseController{
         
             Redirect::to('/exam/' . $exam->id, array('message' => 'Tentti on lisätty kirjastoosi!'));
         } else{
-            View::make('game/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('exam/new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
 
