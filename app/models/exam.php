@@ -75,9 +75,9 @@ class Exam extends BaseModel {
         return $errors;
     }
 
-    public function destroy($id) {
+    public function destroy() {
         $query = DB::connection()->prepare('DELETE FROM Exam WHERE id = :id');
-        $query->execute();
+        $query->execute(array('id' => $this->id));
     }
 
     public function update() {
