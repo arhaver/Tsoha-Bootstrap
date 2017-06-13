@@ -67,7 +67,7 @@ class ExamController extends BaseController{
         $exam = new Exam(array('id' => $id));
         $exam->destroy();
         
-        Redirect::to('/game', array('message' => 'Tentti on poistettu onnistuneesti!'));
+        Redirect::to('/exam', array('message' => 'Tentti on poistettu onnistuneesti!'));
     }
 
     public static function create() {
