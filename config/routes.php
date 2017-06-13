@@ -24,8 +24,8 @@ $routes->get('/exam/:id', function($id) {
     ExamController::show($id);
 });
 
-$routes->get('/exam/1/edit', function() {
-    HelloWorldController::exam_edit();
+$routes->get('/exam/:id/edit', function($id) {
+    ExamController::edit($id);
 });
 
 $routes->get('/login', function() {
