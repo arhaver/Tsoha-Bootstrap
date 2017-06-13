@@ -35,3 +35,15 @@ $routes->get('/login', function() {
 $routes->get('/testindex', function() {
     HelloWorldController::test_index();
 });
+
+$routes->get('/exam/:id/edit', function($id) {
+    ExamController::edit($id);
+});
+
+$routes->post('/exam/:id/edit', function($id) {
+    ExamController::update($id);
+});
+
+$routes->get('/exam/:id/destroy', function($id) {
+    ExamController::destroy($id);
+});

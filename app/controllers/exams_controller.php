@@ -3,12 +3,17 @@
 class ExamController extends BaseController{
     public static function exams(){
         $exams = Exam::all();
-        View::make('exam/index.html', array('exams' => $exams));
+        View::make('exam/index.html', array('attributes' => $attributes));
     }
     
     public static function show($id){
         $exam = Exam::find($id);
-        View::make('exam/show.html', array('exam' => $exam));
+        View::make('exam/show.html', array('attributes' => $attributes));
+    }
+    
+    public static function edit($id){
+        $exam = Exam::find($id);
+        View::make('exam/edit.html', array('attributes' => $attributes));
     }
 
     public static function store() {
@@ -32,6 +37,37 @@ class ExamController extends BaseController{
         } else{
             View::make('exam/new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
+    }
+    
+    public static function update($id) {
+        $params = $_POST;
+        
+        $attributes = (array(
+            'id' => $id,
+            'topic' => $params['topic'],
+            'testdate' => $params['testdate'],
+            'testtime' => $params['testtime'],
+            'room' => $params['room'],
+            'tester' => $params['tester']
+        ));
+        
+        $exam = new Exam($attributes);
+        $errors = $exam->errors();
+        
+        if(count($errors) == 0){
+            $exam->update();
+        
+            Redirect::to('/exam/' . $exam->id, array('message' => 'Tenttiä muokattu onnistuneesti!'));
+        } else{
+            View::make('exam/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
+    }
+    
+    public static function destroy($id){
+        $exam = new Exam(array('id' => $id));
+        $exam->destroy();
+        
+        Redirect::to('/game', array('message' => 'Tentti on poistettu onnistuneesti!'));
     }
 
     public static function create() {

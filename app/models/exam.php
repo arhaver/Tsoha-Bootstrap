@@ -63,16 +63,27 @@ class Exam extends BaseModel {
     
     public function validate_topic(){
         $errors = array();
-        $topic_length = 3;
+        $topic_length_min = 3;
         
         if(parent::string_is_empty($this->topic)){
             $errors[] = 'Nimi ei saa olla tyhjä!';
         }
-        if(!parent::validate_string_length($this->topic, $topic_length)){
-            $errors[] = 'Nimen pitää olla vähintään ' .$topic_length. ' merkkiä!';
+        if(!parent::validate_string_length($this->topic, $topic_length_min)){
+            $errors[] = 'Nimen pitää olla vähintään ' .$topic_length_min. ' merkkiä!';
         }
         
         return $errors;
+    }
+
+    public function destroy($id) {
+        $query = DB::connection()->prepare('DELETE FROM Exam WHERE id = :id');
+        $query->execute();
+    }
+
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester) WHERE id = :id');
+        $query->execute(array('id' => $this->id, 'topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester));
+        $row = $query->fetch();
     }
 
 }
