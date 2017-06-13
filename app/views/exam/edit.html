@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Muokkaa tenttiä {{exams.topic}}</h1>
+<h1>Muokkaa tenttiä {{exam.topic}}</h1>
 
 {% if errors %}
 <div class="alert alert-danger">
@@ -15,23 +15,23 @@
 <form method="post" action="{{base_path}}/exam">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" name="topic" class="form-control" value="{{exams.topic}}">
+        <input type="text" name="topic" class="form-control" value="{{exam.topic}}">
     </div>
     <div class="form-group">
         <label>PVM (d/m/yyyy)</label>
-        <input type="text" name="testdate" class="form-control" value="{{exams.testdate}}">
+        <input type="text" name="testdate" class="form-control" value="{{exam.testdate}}">
     </div>
     <div class="form-group">
         <label>Aika</label>
-        <input type="text" name="testtime" class="form-control" value="{{exams.testtime}}">
+        <input type="text" name="testtime" class="form-control" value="{{exam.testtime}}">
     </div>
     <div class="form-group">
         <label>Paikka</label>
-        <input type="text" name="room" class="form-control" value="{{exams.room}}">
+        <input type="text" name="room" class="form-control" value="{{exam.room}}">
     </div>
     <div class="form-group">
         <label>Vastuuhenkilö</label>
-        <input type="text" name="tester" class="form-control" value="{{exams.tster}}">
+        <input type="text" name="tester" class="form-control" value="{{exam.tster}}">
     </div>
     <!--    <div class="form-group">
             <label>Materiaalit</label>
