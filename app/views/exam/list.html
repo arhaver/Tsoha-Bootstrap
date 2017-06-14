@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Käyttäjän Arto tentit</h1>
+
+{% if user_logged_in%}
+<h1>Käyttäjän {{user_logged_in.name}} tentit</h1>
+{% endif %}
 
 <p>
     <a href="{{base_path}}/exam/new" class="btn btn-success">Lisää tentti</a>
@@ -19,7 +22,7 @@
 
     <tbody>
         <!-- Listataan Tentit tähän -->
-      {% for exam in exams %}
+        {% for exam in exams %}
         <tr>
             <td><a href="{{base_path}}/exam/{{exam.id}}">{{exam.topic}}</a></td>
             <td>{{exam.testdate}}</td>
@@ -32,7 +35,7 @@
             </td>
             <th><a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{exam.id}}/edit">Muokkaa</a></th>
         </tr>
-      {% endfor %}
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

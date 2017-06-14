@@ -27,5 +27,24 @@ class User extends BaseModel {
             return NULL;
         }
     }
+    
+    public static function find($id) {
+        $query = DB::connection()->prepare('SELECT * FROM Person WHERE id = :id LIMIT 1');
+        $query->execute(array('id' => $id));
+        $row = $query->fetch();
+
+        if ($row) {
+            $user = new Exam(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'password' => $row['password'],
+                'teatcher' => $row['teacher']
+            ));
+
+            return $user;
+        }
+
+        return null;
+    }
 
 }

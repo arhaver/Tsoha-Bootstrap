@@ -48,9 +48,9 @@ $routes->post('/exam/:id/destroy', function($id) {
     ExamController::destroy($id);
 });
 
-$routes->get('/login', function(){
-  UserController::login();
+$routes->get('/login', function() {
+    UserController::login();
 });
-$routes->post('/login', function(){
-  UserController::handle_login();
+$routes->post('/login', function() {
+    UserController::handle_login();
 });

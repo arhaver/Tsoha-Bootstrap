@@ -3,7 +3,7 @@
 class ExamController extends BaseController{
     public static function exams(){
         $exams = Exam::all();
-        View::make('exam/index.html', array('exams' => $exams));
+        View::make('exam/list.html', array('exams' => $exams));
     }
     
     public static function show($id){
