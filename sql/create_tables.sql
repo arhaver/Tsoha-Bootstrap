@@ -2,7 +2,8 @@
 CREATE TABLE Person(
     id SERIAL PRIMARY KEY,
     name varchar(25) NOT NULL,
-    password varchar(25) NOT NULL
+    password varchar(25) NOT NULL,
+    teatcher boolean DEFAULT FALSE
 );
 
 CREATE TABLE Exam(

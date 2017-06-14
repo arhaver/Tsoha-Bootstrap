@@ -81,9 +81,11 @@ class Exam extends BaseModel {
     }
 
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester) WHERE id = :id');
+        $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester WHERE id = :id');
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester, 'id' => $this->id));
         $row = $query->fetch();
+        
+//        Kint::dump($row);
     }
 
 }
