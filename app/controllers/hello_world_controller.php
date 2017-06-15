@@ -14,7 +14,7 @@ class HelloWorldController extends BaseController {
             'testdate' => '18/07/2017'
         ));
         $errors = $test->errors();
-        
+
         Kint::dump($errors);
     }
 

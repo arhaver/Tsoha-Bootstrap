@@ -21,13 +21,13 @@ class User extends BaseModel {
                 'password' => $row['password'],
                 'teatcher' => $row['teatcher']
             ));
-            
+
             return $user;
         } else {
             return NULL;
         }
     }
-    
+
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Person WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));

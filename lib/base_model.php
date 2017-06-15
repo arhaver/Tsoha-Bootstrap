@@ -27,19 +27,19 @@ class BaseModel {
 
         return $errors;
     }
-    
+
     public function validate_string_length($string, $length) {
-        if(strlen($string) < $length) {
+        if (strlen($string) < $length) {
             return false;
         }
         return true;
     }
-    
+
     public function string_is_empty($string) {
-        if($string == '' || $string == null){
+        if ($string == '' || $string == null) {
             return true;
         }
         return false;
     }
-    
+
 }

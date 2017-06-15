@@ -9,9 +9,9 @@ class Exam extends BaseModel {
         $this->validators = array('validate_topic');
     }
 
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM Exam');
-        $query->execute();
+    public static function all($owner) {
+        $query = DB::connection()->prepare('SELECT * FROM Exam WHERE owner = :owner');
+        $query->execute(array('owner' => $owner));
         $rows = $query->fetchAll();
         $exams = array();
 
@@ -54,24 +54,24 @@ class Exam extends BaseModel {
         return null;
     }
 
-    public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Exam (topic, testdate, testtime, room, tester) VALUES (:topic, :testdate, :testtime, :room, :tester) RETURNING id');
-        $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester));
+    public function save($owner) {
+        $query = DB::connection()->prepare('INSERT INTO Exam (topic, owner, testdate, testtime, room, tester) VALUES (:topic, :testdate, :testtime, :room, :tester) RETURNING id');
+        $query->execute(array('topic' => $this->topic, 'owner' => $owner, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
-    
-    public function validate_topic(){
+
+    public function validate_topic() {
         $errors = array();
         $topic_length_min = 3;
-        
-        if(parent::string_is_empty($this->topic)){
+
+        if (parent::string_is_empty($this->topic)) {
             $errors[] = 'Nimi ei saa olla tyhjä!';
         }
-        if(!parent::validate_string_length($this->topic, $topic_length_min)){
-            $errors[] = 'Nimen pitää olla vähintään ' .$topic_length_min. ' merkkiä!';
+        if (!parent::validate_string_length($this->topic, $topic_length_min)) {
+            $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
         }
-        
+
         return $errors;
     }
 
@@ -84,8 +84,6 @@ class Exam extends BaseModel {
         $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester WHERE id = :id');
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester, 'id' => $this->id));
         $row = $query->fetch();
-        
-//        Kint::dump($row);
     }
 
 }

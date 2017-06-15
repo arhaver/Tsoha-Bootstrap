@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if user_logged_in%}
+<h1>Käyttäjän {{user_logged_in.name}} materiaalit</h1>
+{% endif %}
+
+<div class="alert alert-success">
+  {{message}}
+</div>
+
+<p>
+    <a href="{{base_path}}/material/new" class="btn btn-success">Lisää tentti</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tekijä(t)</th>
+            <th>Tyyppi</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Listataan Tentit tähän -->
+        {% for material in materials %}
+        <tr>
+            <td><a href="{{base_path}}/material/{{material.id}}">{{material.topic}}</a></td>
+            <td>{{material.writer}}</td>
+            <td>{{material.kind}}</td>
+            <td>{{material.kind}}</td>
+            <th><a class="btn btn-default btn-sm" href="{{base_path}}/material/{{material.id}}/edit">Muokkaa</a></th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

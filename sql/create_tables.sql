@@ -22,8 +22,8 @@ CREATE TABLE Material(
     topic varchar(120) NOT NULL,
     writer varchar(120),
     kind varchar(25),
-    publication varchar(120),
-    published INTEGER
+    lang varchar(25),
+    info varchar(250)
 );
 
 CREATE TABLE ExamMaterial(
