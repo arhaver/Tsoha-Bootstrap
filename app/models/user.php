@@ -19,7 +19,7 @@ class User extends BaseModel {
                 'id' => $row['id'],
                 'name' => $row['name'],
                 'password' => $row['password'],
-                'teatcher' => $row['teatcher']
+                'teacher' => $row['teacher']
             ));
 
             return $user;
@@ -38,7 +38,7 @@ class User extends BaseModel {
                 'id' => $row['id'],
                 'name' => $row['name'],
                 'password' => $row['password'],
-                'teatcher' => $row['teacher']
+                'teacher' => $row['teacher']
             ));
 
             return $user;
