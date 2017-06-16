@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Liitä tenttimateriaali tenttiin {{exam.topic}}</h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/exam/{{exam.id}}/addmaterial">
+    <div class="form-group">
+        <label>Valitse materiaali luettelosta:</label>
+        <input list="materials" name="material">
+        <datalist id="materials">
+            {% for material in materials %}
+            <option value="{{material.name}}">
+            {% endfor %}
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label>Tenttialue</label>
+        <input type="text" name="limitations" class="form-control" value="{{exammaterial.limitations}}">
+    </div>
+    <div class="form-group">
+        <label>Sivumäärä</label>
+        <input type="number" name="pages" class="form-control" value="{{exammaterials.pages}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}

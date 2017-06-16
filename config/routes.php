@@ -32,16 +32,20 @@ $routes->get('/exam/:id/edit', function($id) {
     ExamController::edit($id);
 });
 
-$routes->get('/exam/:id/edit', function($id) {
-    ExamController::edit($id);
-});
-
 $routes->post('/exam/:id/edit', function($id) {
     ExamController::update($id);
 });
 
 $routes->post('/exam/:id/destroy', function($id) {
     ExamController::destroy($id);
+});
+
+$routes->get('/exam/:id/addmaterial', function($id) {
+    ExamController::addmaterial($id);
+});
+
+$routes->post('/exam/:id/addmaterial', function($id) {
+    ExamController::linkmaterial($id);
 });
 
 $routes->get('/login', function() {
@@ -80,5 +84,5 @@ $routes->post('/material/:id/edit', function($id) {
 });
 
 $routes->post('/material/:id/destroy', function($id) {
-MaterialController::destroy($id);
+    MaterialController::destroy($id);
 });

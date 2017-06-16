@@ -84,4 +84,26 @@ class Material extends BaseModel {
         $row = $query->fetch();
     }
 
+    public static function find_by_topic($topic) {
+        $query = DB::connection()->prepare('SELECT * FROM Material WHERE topic = :topic LIMIT 1');
+        $query->execute(array('topic' => $topic));
+        $row = $query->fetch();
+
+        if ($row) {
+            $material = new Material(array(
+                'id' => $row['id'],
+                'owner' => $row['owner'],
+                'topic' => $row['topic'],
+                'writer' => $row['writer'],
+                'kind' => $row['kind'],
+                'lang' => $row['lang'],
+                'info' => $row['info']
+            ));
+
+            return $material;
+        }
+
+        return null;
+    }
+
 }

@@ -17,6 +17,15 @@ class ExamController extends BaseController {
         View::make('exam/edit.html', array('exam' => $exam));
     }
 
+    public static function create() {
+        View::make('exam/new.html');
+    }
+    
+    public static function addmaterial($id) {
+        $exam = Exam::find($id);
+        View::make('exam/addmaterial.html', array('exam' => $exam));
+    }
+
     public static function store() {
         $params = $_POST;
 
@@ -70,9 +79,16 @@ class ExamController extends BaseController {
 
         Redirect::to('/exam', array('message' => 'Tentti on poistettu onnistuneesti!'));
     }
-
-    public static function create() {
-        View::make('exam/new.html');
+    
+    public static function linkmaterial($id) {
+        $params = $_POST;
+        
+        $material = Material::find_by_topic($params['materialname']);
+        $limitation = $params['limitations'];
+        $pages = $params['pages'];
+        
+        $exam = Exam::find($id);
+        $exam->addmaterial($material->id, $limitation, $pages);
     }
 
 }
