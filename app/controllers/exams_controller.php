@@ -3,30 +3,36 @@
 class ExamController extends BaseController {
 
     public static function exams() {
+        self::check_logged_in();
         $exams = Exam::all($_SESSION['user']);
         View::make('exam/list.html', array('exams' => $exams));
     }
 
     public static function show($id) {
+        self::check_logged_in();
         $exam = Exam::find($id);
         View::make('exam/show.html', array('exam' => $exam));
     }
 
     public static function edit($id) {
+        self::check_logged_in();
         $exam = Exam::find($id);
         View::make('exam/edit.html', array('exam' => $exam));
     }
 
     public static function create() {
+        self::check_logged_in();
         View::make('exam/new.html');
     }
     
     public static function addmaterial($id) {
+        self::check_logged_in();
         $exam = Exam::find($id);
         View::make('exam/addmaterial.html', array('exam' => $exam));
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
 
         $attributes = (array(
@@ -50,6 +56,7 @@ class ExamController extends BaseController {
     }
 
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
 
         $attributes = (array(
@@ -74,6 +81,7 @@ class ExamController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
         $exam = new Exam(array('id' => $id));
         $exam->destroy();
 
@@ -81,6 +89,7 @@ class ExamController extends BaseController {
     }
     
     public static function linkmaterial($id) {
+        self::check_logged_in();
         $params = $_POST;
         
         $material = Material::find_by_topic($params['materialname']);

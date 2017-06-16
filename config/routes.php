@@ -86,3 +86,7 @@ $routes->post('/material/:id/edit', function($id) {
 $routes->post('/material/:id/destroy', function($id) {
     MaterialController::destroy($id);
 });
+
+$routes->post('/logout', function() {
+    UserController::logout();
+});

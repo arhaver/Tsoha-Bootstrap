@@ -3,19 +3,11 @@
 class HelloWorldController extends BaseController {
 
     public static function index() {
-        // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-        echo 'Tämä on etusivu!';
+        View::make('index.html');
     }
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        $test = new Exam(array(
-            'topic' => 'a',
-            'testdate' => '18/07/2017'
-        ));
-        $errors = $test->errors();
-
-        Kint::dump($errors);
     }
 
     public static function exam_list() {
