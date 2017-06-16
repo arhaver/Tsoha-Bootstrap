@@ -8,7 +8,7 @@ INSERT INTO Exam (owner, topic, testdate, testtime, room, tester, publicity) VAL
 INSERT INTO Exam (owner, topic, testdate, testtime, room, tester) VALUES (2, 'TestiTesti2', '25/11/2017', '9:00', 'Excatum B111', 'Liina Lehtori');
 
 -- Material-taulun testidata
-INSERT INTO Material (topic, writer, kind, publication, published) VALUES ('Testauksen ABC', 'Toimi Toimittaja', 'Artikkeli', 'Testaus raamaattu', 2014);
+INSERT INTO Material (topic, writer, kind, lang, info) VALUES ('Testauksen ABC', 'Toimi Toimittaja', 'Artikkeli', 'suomi', 'Testilehti, 2014, nro. 5');
 INSERT INTO Material (topic) VALUES ('Tentti Kirja 1');
 
 -- ExamMaterial-taulun testidata
