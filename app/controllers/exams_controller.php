@@ -28,7 +28,8 @@ class ExamController extends BaseController {
     public static function addmaterial($id) {
         self::check_logged_in();
         $exam = Exam::find($id);
-        View::make('exam/addmaterial.html', array('exam' => $exam));
+        $materials = Material::all();
+        View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials));
     }
 
     public static function store() {
@@ -92,7 +93,7 @@ class ExamController extends BaseController {
         self::check_logged_in();
         $params = $_POST;
         
-        $material = Material::find_by_topic($params['materialname']);
+        $material = Material::find_by_topic($params['material']);
         $limitation = $params['limitations'];
         $pages = $params['pages'];
         

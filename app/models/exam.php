@@ -55,7 +55,7 @@ class Exam extends BaseModel {
     }
 
     public function save($owner) {
-        $query = DB::connection()->prepare('INSERT INTO Exam (topic, owner, testdate, testtime, room, tester) VALUES (:topic, :testdate, :testtime, :room, :tester) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Exam (topic, owner, testdate, testtime, room, tester) VALUES (:topic, :owner, :testdate, :testtime, :room, :tester) RETURNING id');
         $query->execute(array('topic' => $this->topic, 'owner' => $owner, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester));
         $row = $query->fetch();
         $this->id = $row['id'];

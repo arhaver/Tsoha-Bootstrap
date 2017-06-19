@@ -9,9 +9,9 @@ class Material extends BaseModel {
         $this->validators = array('validate_topic');
     }
 
-    public static function all($owner) {
-        $query = DB::connection()->prepare('SELECT * FROM Material WHERE owner = :owner');
-        $query->execute(array('owner' => $owner));
+    public static function all() {
+        $query = DB::connection()->prepare('SELECT * FROM Material');
+        $query->execute();
         $rows = $query->fetchAll();
         $materials = array();
 
