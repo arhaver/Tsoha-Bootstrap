@@ -16,7 +16,7 @@ class UserController extends BaseController {
         } else {
             $_SESSION['user'] = $user->id;
 
-            Redirect::to('/exams', array('message' => 'Tervetuloa takaisin ' . $user->name . '!'));
+            Redirect::to('/exam', array('message' => 'Tervetuloa takaisin ' . $user->name . '!'));
         }
     }
 
