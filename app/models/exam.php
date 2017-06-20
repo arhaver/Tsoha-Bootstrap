@@ -86,9 +86,9 @@ class Exam extends BaseModel {
         $row = $query->fetch();
     }
     
-    public function addmaterial($materialid, $limitation, $pages){
-        $query = DB::connection()->prepare('INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (:exam, :material, :limitation, :pages');
-        $query->execute(array('exam' => $this->id, 'material' => $materialid, 'limitation' => $limitation, 'pages' => $pages));
+    public function addmaterial($material, $limitation, $pages){
+        $query = DB::connection()->prepare('INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (:exam, :material, :limitation, :pages)');
+        $query->execute(array('exam' => $this->id, 'material' => $material, 'limitation' => $limitation, 'pages' => $pages));
     }
 
 }
