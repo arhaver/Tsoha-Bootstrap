@@ -75,10 +75,6 @@ $routes->get('/material/:id/edit', function($id) {
     MaterialController::edit($id);
 });
 
-$routes->get('/material/:id/edit', function($id) {
-    MaterialController::edit($id);
-});
-
 $routes->post('/material/:id/edit', function($id) {
     MaterialController::update($id);
 });

@@ -36,7 +36,7 @@ class MaterialController extends BaseController {
         $errors = $material->errors();
 
         if (count($errors) == 0) {
-            $material->save($_SESSION['user']);
+            $material->save();
 
             Redirect::to('/material/' . $material->id, array('message' => 'Materiaali on lisätty kirjastoon!'));
         } else {
