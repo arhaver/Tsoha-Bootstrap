@@ -94,8 +94,6 @@ class Exam extends BaseModel {
     public function findmaterial(){
         $querry = DB::connection()->prepare('SELECT * FROM ExamMaterial INNER JOIN Material ON ExamMaterial.material = Material.id where exam = :id');
         $querry->execute(array('id' => $this->id));
-        $row = $querry->fetch();
-        
         $rows = $query->fetchAll();
         $exammaterials = array();
 
