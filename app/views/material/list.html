@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if user_logged_in%}
-<h1>Käyttäjän {{user_logged_in.name}} materiaalit</h1>
+<h1>Materiaalit</h1>
 {% endif %}
 
 <div class="alert alert-success">
@@ -19,6 +19,7 @@
             <th>Nimi</th>
             <th>Tekijä(t)</th>
             <th>Tyyppi</th>
+            <th>Kieli</th>
             <th></th>
         </tr>
     </thead>
@@ -30,7 +31,7 @@
             <td><a href="{{base_path}}/material/{{material.id}}">{{material.topic}}</a></td>
             <td>{{material.writer}}</td>
             <td>{{material.kind}}</td>
-            <td>{{material.kind}}</td>
+            <td>{{material.lang}}</td>
             <th><a class="btn btn-default btn-sm" href="{{base_path}}/material/{{material.id}}/edit">Muokkaa</a></th>
         </tr>
         {% endfor %}

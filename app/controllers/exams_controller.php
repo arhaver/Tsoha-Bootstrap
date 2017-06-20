@@ -99,6 +99,8 @@ class ExamController extends BaseController {
         
         $exam = Exam::find($id);
         $exam->addmaterial($material->id, $limitation, $pages);
+        
+        Redirect::to('/exam/' . $exam->id, array('message' => 'Materiaali on liitetty tenttiin!'));
     }
 
 }

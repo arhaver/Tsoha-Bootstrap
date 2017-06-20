@@ -37,7 +37,6 @@ class Material extends BaseModel {
         if ($row) {
             $material = new Material(array(
                 'id' => $row['id'],
-                'owner' => $row['owner'],
                 'topic' => $row['topic'],
                 'writer' => $row['writer'],
                 'kind' => $row['kind'],
