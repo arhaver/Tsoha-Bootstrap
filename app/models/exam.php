@@ -90,5 +90,28 @@ class Exam extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (:exam, :material, :limitation, :pages)');
         $query->execute(array('exam' => $this->id, 'material' => $material, 'limitation' => $limitation, 'pages' => $pages));
     }
+    
+    public function findmaterial(){
+        $querry = DB::connection()->prepare('SELECT * FROM ExamMaterial INNER JOIN Material ON ExamMaterial.material = Material.id where exam = :id');
+        $querry->execute(array('id' => $this->id));
+        $row = $querry->fetch();
+        
+        $rows = $query->fetchAll();
+        $exammaterials = array();
+
+        foreach ($rows as $row) {
+            $exammaterials[] = array(
+                'limitation' => $row['limitation'],
+                'pages' => $row['pages'],
+                'topic' => $row['topic'],
+                'writer' => $row['writer'],
+                'kind' => $row['kind'],
+                'lang' => $row['lang'],
+                'info' => $row['info']
+            );
+        }
+
+        return $exammaterials;
+    }
 
 }

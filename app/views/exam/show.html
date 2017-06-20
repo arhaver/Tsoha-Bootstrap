@@ -19,9 +19,10 @@
     <li><strong>Vastuuhenkilö:</strong> {{exam.tester}}</li>
 </ul>
 <!-- Tenttimateriaalien yksityiskohtainen listaus tähän -->
-<p>
-    Luento materiaali, Leena Luennoitsija, 55 sivua.<br>
-    Kurssikirja, Kirjailija Kai, Otava, luvut 1-3, 30 sivua.<br>
-    Toinen kirja, Rustaaja Riina ja Skriivaaja Tino, Tietokirjat, sivut 34-96, 63 sivua.
-</p>
+{% for material in examMaterials %}
+<p>  
+    <strong>{{material.topic}}</strong>, {{material.writer}}, {{material.kind}}, {{material.lang}}, {{material.limitations}}, {{material.pages}}<br>
+    {{material.info}}
+</p>    
+{% endfor %}
 {% endblock %}
