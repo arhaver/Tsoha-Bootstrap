@@ -2,7 +2,7 @@
 
 class Material extends BaseModel {
 
-    public $id, $owner, $topic, $writer, $kind, $lang, $info;
+    public $id, $topic, $writer, $kind, $lang, $info;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -18,7 +18,6 @@ class Material extends BaseModel {
         foreach ($rows as $row) {
             $materials[] = new Material(array(
                 'id' => $row['id'],
-                'owner' => $row['owner'],
                 'topic' => $row['topic'],
                 'writer' => $row['writer'],
                 'kind' => $row['kind'],
@@ -52,9 +51,9 @@ class Material extends BaseModel {
         return null;
     }
 
-    public function save($owner) {
-        $query = DB::connection()->prepare('INSERT INTO Material (topic, owner, writer, kind, lang, info) VALUES (:topic, :writer, :kind, :lang, :info) RETURNING id');
-        $query->execute(array('topic' => $this->topic, 'owner' => $owner, 'writer' => $this->writer, 'kind' => $this->kind, 'lang' => $this->lang, 'info' => $this->info));
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Material (topic, writer, kind, lang, info) VALUES (:topic, :writer, :kind, :lang, :info) RETURNING id');
+        $query->execute(array('topic' => $this->topic, 'writer' => $this->writer, 'kind' => $this->kind, 'lang' => $this->lang, 'info' => $this->info));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
@@ -92,7 +91,6 @@ class Material extends BaseModel {
         if ($row) {
             $material = new Material(array(
                 'id' => $row['id'],
-                'owner' => $row['owner'],
                 'topic' => $row['topic'],
                 'writer' => $row['writer'],
                 'kind' => $row['kind'],

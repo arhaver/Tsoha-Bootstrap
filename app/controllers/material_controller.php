@@ -4,7 +4,7 @@ class MaterialController extends BaseController {
 
     public static function materials() {
         self::check_logged_in();
-        $materials = Material::all($_SESSION['user']);
+        $materials = Material::all();
         View::make('material/list.html', array('materials' => $materials));
     }
 
