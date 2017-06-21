@@ -31,13 +31,6 @@ class ExamController extends BaseController {
         View::make('exam/new.html');
     }
 
-    public static function addmaterial($id) {
-        self::check_logged_in();
-        $exam = Exam::find($id);
-        $materials = Material::all();
-        View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials));
-    }
-
     public static function store() {
         self::check_logged_in();
         $params = $_POST;
@@ -93,20 +86,6 @@ class ExamController extends BaseController {
         $exam->destroy();
 
         Redirect::to('/exam', array('message' => 'Tentti on poistettu onnistuneesti!'));
-    }
-
-    public static function linkmaterial($id) {
-        self::check_logged_in();
-        $params = $_POST;
-
-        $material = Material::find_by_topic($params['material']);
-        $limitation = $params['limitations'];
-        $pages = $params['pages'];
-
-        $exam = Exam::find($id);
-        $exam->addmaterial($material->id, $limitation, $pages);
-
-        Redirect::to('/exam/' . $exam->id, array('message' => 'Materiaali on liitetty tenttiin!'));
     }
 
 }

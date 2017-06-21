@@ -41,11 +41,11 @@ $routes->post('/exam/:id/destroy', function($id) {
 });
 
 $routes->get('/exam/:id/addmaterial', function($id) {
-    ExamController::addmaterial($id);
+    ExamMaterialController::addmaterial($id);
 });
 
 $routes->post('/exam/:id/addmaterial', function($id) {
-    ExamController::linkmaterial($id);
+    ExamMaterialController::linkmaterial($id);
 });
 
 $routes->get('/login', function() {

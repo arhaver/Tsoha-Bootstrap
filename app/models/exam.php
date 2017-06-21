@@ -145,11 +145,6 @@ class Exam extends BaseModel {
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester, 'id' => $this->id));
     }
     
-    public function addmaterial($material, $limitation, $pages){
-        $query = DB::connection()->prepare('INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (:exam, :material, :limitation, :pages)');
-        $query->execute(array('exam' => $this->id, 'material' => $material, 'limitation' => $limitation, 'pages' => $pages));
-    }
-    
     public function findExamMaterials(){
         $query = DB::connection()->prepare('SELECT * FROM ExamMaterial INNER JOIN Material ON ExamMaterial.material = Material.id where exam = :id');
         $query->execute(array('id' => $this->id));
