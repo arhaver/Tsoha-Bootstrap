@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if user_logged_in%}
 <h1>Käyttäjän {{user_logged_in.name}} tentit</h1>
-{% endif %}
 
 <div class="alert alert-success">
-  {{message}}
+    {{message}}
 </div>
 
 <p>
@@ -17,6 +15,7 @@
     <thead>
         <tr>
             <th>Nimi</th>
+            <th>PVM</th>
             <th>Aika</th>
             <th>Paikka</th>
             <th>Materiaalit</th>
@@ -31,10 +30,13 @@
             <td><a href="{{base_path}}/exam/{{exam.id}}">{{exam.topic}}</a></td>
             <td>{{exam.testdate}}</td>
             <td>{{exam.testtime}}</td>
+            <td>{{exam.room}}</td>
             <td><ul>
-                    <li>Luento Materiaali</li>
-                    <li>Kurssikirja</li>
-                    <li>Toinen kirja</li>
+                    {% for material in examMaterials %}
+                        {% if material.exam == exam.id %}
+                            <li>{{material.topic}}</li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </td>
             <th><a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{exam.id}}/edit">Muokkaa</a></th>
