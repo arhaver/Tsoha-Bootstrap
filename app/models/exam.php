@@ -6,7 +6,7 @@ class Exam extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_topic');
+        $this->validators = array('validate_topic', 'validate_date');
     }
 
     public static function all($owner) {
