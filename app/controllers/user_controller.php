@@ -45,4 +45,9 @@ class UserController extends BaseController {
 //        }
     }
 
+    public static function add_user() {
+        View::make('user/register.html');
+        
+    }
+
 }
