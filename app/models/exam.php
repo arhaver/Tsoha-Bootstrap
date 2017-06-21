@@ -89,11 +89,24 @@ class Exam extends BaseModel {
             $errors[] = 'Päivämäärä ei saa olla tyhjä!';
         }
         if (!$examdate) {
-            $errors[] = 'Päivämäärän tulee olla muodossa dd/mm/yyyy!';
+            $errors[] = 'Päivämäärän tulee olla muodossa dd/mm/yyyy';
         }
         elseif ($date_min > $examdate){
             $errors[] = 'Tentin päivämäärän pitää olla tulevaisuudessa!';
         }
+        return $errors;
+    }
+    
+    public function validate_time(){
+        $errors = array();
+        $examtime = date_create_from_format('H:i', $this->testtime);
+        
+        if (parent::string_is_empty($this->testtime)) {
+            $this->testtime = '0:00';
+        }elseif (!$examtime) {
+            $errors[] = 'Ajan tulee olla muodossa hh:mm';
+        }
+        
         return $errors;
     }
 
