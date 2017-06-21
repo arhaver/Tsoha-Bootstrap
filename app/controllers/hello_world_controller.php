@@ -10,7 +10,7 @@ class HelloWorldController extends BaseController {
         // Testaa koodiasi täällä
         $errors = array();
         $date_min = date_create("now");
-        $examdate = date_create_from_format('d/m/Y', '25/05/2017');
+        $examdate = date_create_from_format('d/m/Y', '05/2017');
 
         if (!$examdate) {
             $errors[] = 'Päivämäärän tulee olla muodossa dd/mm/yyyy!';
