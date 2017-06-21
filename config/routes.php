@@ -45,7 +45,7 @@ $routes->get('/exam/:id/addmaterial', function($id) {
 });
 
 $routes->post('/exam/:id/addmaterial', function($id) {
-    ExamMaterialController::linkmaterial($id);
+    ExamMaterialController::store($id);
 });
 
 $routes->get('/login', function() {
