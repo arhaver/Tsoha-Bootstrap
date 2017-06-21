@@ -64,6 +64,7 @@ class Exam extends BaseModel {
     public function validate_topic() {
         $errors = array();
         $topic_length_min = 3;
+        $topic_length_max = 120;
 
         if (parent::string_is_empty($this->topic)) {
             $errors[] = 'Nimi ei saa olla tyhjä!';
@@ -71,7 +72,28 @@ class Exam extends BaseModel {
         if (!parent::validate_string_length($this->topic, $topic_length_min)) {
             $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
         }
+        
+        if (parent::validate_string_length($this->topic, $topic_length_max + 1)) {
+            $errors[] = 'Nimi saa olla korkeintaan ' . $topic_length_max . ' merkkiä!';
+        }
 
+        return $errors;
+    }
+    
+    public function validate_date(){
+        $errors = array();
+        $date_min = date_create("now");
+        $examdate = date_create_from_format('d/m/Y', $this->testdate);
+
+        if (parent::string_is_empty($this->testdate)) {
+            $errors[] = 'Päivämäärä ei saa olla tyhjä!';
+        }
+        if (!$examdate) {
+            $errors[] = 'Päivämäärän tulee olla muodossa dd/mm/yyyy!';
+        }
+        elseif ($date_min > $examdate){
+            $errors[] = 'Tentin päivämäärän pitää olla tulevaisuudessa!';
+        }
         return $errors;
     }
 
