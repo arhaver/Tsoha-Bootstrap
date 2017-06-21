@@ -2,7 +2,7 @@
 
 class ExamMaterial extends BaseModel {
 
-    public $exam, $material, $limitations, $pages;
+    public $exam, $material, $limitation, $pages;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -11,9 +11,9 @@ class ExamMaterial extends BaseModel {
     
     public function validate_limitations(){
         $errors = array();
-        $limitations_length_max = 120;
-        if (parent::validate_string_length($this->limitations, $limitations_length_max)) {
-            $errors[] = 'Koealue saa olla korkeintaan ' . $limitations_length_max . ' merkkiä!';
+        $limitation_length_max = 120;
+        if (parent::validate_string_length($this->limitation, $limitation_length_max)) {
+            $errors[] = 'Koealue saa olla korkeintaan ' . $limitation_length_max . ' merkkiä!';
         }
         
         return $errors;
