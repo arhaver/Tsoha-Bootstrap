@@ -99,12 +99,15 @@ class Exam extends BaseModel {
     
     public function validate_time(){
         $errors = array();
+        $examtime_max = date_create_from_format('H:i', '24:00');
         $examtime = date_create_from_format('H:i', $this->testtime);
         
         if (parent::string_is_empty($this->testtime)) {
             $this->testtime = '0:00';
         }elseif (!$examtime) {
             $errors[] = 'Ajan tulee olla muodossa hh:mm';
+        }elseif ($examtime > $examtime_max) {
+            $errors[] = 'Ajan tulee olla 0:00 ja 24:00 välillä!';
         }
         
         return $errors;
