@@ -9,15 +9,15 @@ class User extends BaseModel {
 //        $this->validators = array('validate_username');
     }
 
-    public static function authenticate($name, $password) {
+    public static function authenticate($username, $password) {
 
-        $query = DB::connection()->prepare('SELECT * FROM Person WHERE name = :name AND password = :password LIMIT 1');
-        $query->execute(array('name' => $name, 'password' => $password));
+        $query = DB::connection()->prepare('SELECT * FROM Person WHERE username = :username AND password = :password LIMIT 1');
+        $query->execute(array('username' => $username, 'password' => $password));
         $row = $query->fetch();
         if ($row) {
             $user = new User(array(
                 'id' => $row['id'],
-                'name' => $row['name'],
+                'username' => $row['username'],
                 'password' => $row['password'],
                 'teacher' => $row['teacher']
             ));
@@ -36,7 +36,7 @@ class User extends BaseModel {
         if ($row) {
             $user = new Exam(array(
                 'id' => $row['id'],
-                'name' => $row['name'],
+                'username' => $row['username'],
                 'password' => $row['password'],
                 'teacher' => $row['teacher']
             ));
