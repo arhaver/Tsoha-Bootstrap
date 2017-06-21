@@ -1,7 +1,7 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
 -- Person-taulun testidata
-INSERT INTO Person (name, password) VALUES ('Arha', 'Kissa123');
-INSERT INTO Person (name, password) VALUES ('Kapy', 'Olli123');
+INSERT INTO Person (username, password) VALUES ('Arha', 'Kissa123');
+INSERT INTO Person (username, password) VALUES ('Kapy', 'Olli123');
 
 -- Exam-taulun testidata
 INSERT INTO Exam (owner, topic, testdate, testtime, room, tester, publicity) VALUES (1, 'TestiTesti', '05/06/2017', '16:00', 'Excatum B123', 'Joku Proffa', true);
