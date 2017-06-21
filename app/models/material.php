@@ -6,7 +6,7 @@ class Material extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_topic');
+        $this->validators = array('validate_topic', 'validate_writer', 'validate_kind', 'validate_lang', 'validate_info');
     }
 
     public static function all() {
@@ -57,20 +57,6 @@ class Material extends BaseModel {
         $this->id = $row['id'];
     }
 
-    public function validate_topic() {
-        $errors = array();
-        $topic_length_min = 3;
-
-        if (parent::string_is_empty($this->topic)) {
-            $errors[] = 'Nimi ei saa olla tyhjä!';
-        }
-        if (!parent::validate_string_length($this->topic, $topic_length_min)) {
-            $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
-        }
-
-        return $errors;
-    }
-
     public function destroy() {
         $query = DB::connection()->prepare('DELETE FROM Material WHERE id = :id');
         $query->execute(array('id' => $this->id));
@@ -101,6 +87,69 @@ class Material extends BaseModel {
         }
 
         return null;
+    }
+    
+    public function validate_topic() {
+        $errors = array();
+        $topic_length_min = 3;
+        $topic_length_max = 120;
+
+        if (parent::string_is_empty($this->topic)) {
+            $errors[] = 'Nimi ei saa olla tyhjä!';
+        }
+        if (!parent::validate_string_length($this->topic, $topic_length_min)) {
+            $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
+        }
+        
+        if (parent::validate_string_length($this->topic, $topic_length_max + 1)) {
+            $errors[] = 'Nimi saa olla korkeintaan ' . $topic_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+    
+    public function validate_writer() {
+        $errors = array();
+        $writer_length_max = 120;
+
+        if (parent::validate_string_length($this->writer, $writer_length_max + 1)) {
+            $errors[] = 'Kirjoittajien tiedot saavat olla korkeintaan ' . $writer_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+    
+    public function validate_kind() {
+        $errors = array();
+        $kind_length_max = 25;
+
+        if (parent::validate_string_length($this->kind, $kind_length_max + 1)) {
+            $errors[] = 'Tyyppi saa olla korkeintaan ' . $kind_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+    
+    public function validate_lang() {
+        $errors = array();
+        $lang_length_max = 25;
+
+        if (parent::validate_string_length($this->lang, $lang_length_max + 1)) {
+            $errors[] = 'Kieli saa olla korkeintaan ' . $lang_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+    
+    public function validate_info() {
+        $errors = array();
+        $info_length_max = 250;
+
+        if (parent::validate_string_length($this->info, $info_length_max + 1)) {
+            $errors[] = 'Muut tiedot saavat olla korkeintaan ' . $info_length_max . ' merkkiä!';
+        }
+
+        return $errors;
     }
 
 }

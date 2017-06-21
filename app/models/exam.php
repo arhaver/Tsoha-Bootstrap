@@ -6,7 +6,7 @@ class Exam extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_topic', 'validate_date', 'validate_time');
+        $this->validators = array('validate_topic', 'validate_date', 'validate_time', 'validate_room', 'validate_tester');
     }
 
     public static function all($owner) {
@@ -83,13 +83,13 @@ class Exam extends BaseModel {
     public function validate_date(){
         $errors = array();
         $date_min = date_create("now");
-        $examdate = date_create_from_format('d/m/Y', $this->testdate);
+        $examdate = date_create_from_format('Y-m-d', $this->testdate);
 
         if (parent::string_is_empty($this->testdate)) {
             $errors[] = 'Päivämäärä ei saa olla tyhjä!';
         }
         if (!$examdate) {
-            $errors[] = 'Päivämäärän tulee olla muodossa dd/mm/yyyy';
+            $errors[] = 'Päivämäärän tulee olla muodossa yyyy-m-d';
         }
         elseif ($date_min > $examdate){
             $errors[] = 'Tentin päivämäärän pitää olla tulevaisuudessa!';
@@ -112,6 +112,28 @@ class Exam extends BaseModel {
         
         return $errors;
     }
+    
+    public function validate_room() {
+        $errors = array();
+        $room_length_max = 120;
+
+        if (parent::validate_string_length($this->room, $room_length_max + 1)) {
+            $errors[] = 'Paikan tiedot saavat olla korkeintaan ' . $room_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+    
+    public function validate_tester() {
+        $errors = array();
+        $tester_length_max = 120;
+
+        if (parent::validate_string_length($this->tester, $tester_length_max + 1)) {
+            $errors[] = 'Vastuuhenkilön tiedot saavat olla korkeintaan ' . $tester_length_max . ' merkkiä!';
+        }
+
+        return $errors;
+    }
 
     public function destroy() {
         $query = DB::connection()->prepare('DELETE FROM Exam WHERE id = :id');
@@ -121,7 +143,6 @@ class Exam extends BaseModel {
     public function update() {
         $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester WHERE id = :id');
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester, 'id' => $this->id));
-        $row = $query->fetch();
     }
     
     public function addmaterial($material, $limitation, $pages){
