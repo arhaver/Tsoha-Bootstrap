@@ -91,7 +91,7 @@ class Exam extends BaseModel {
         $query->execute(array('exam' => $this->id, 'material' => $material, 'limitation' => $limitation, 'pages' => $pages));
     }
     
-    public function findmaterial(){
+    public function findExamMaterials(){
         $query = DB::connection()->prepare('SELECT * FROM ExamMaterial INNER JOIN Material ON ExamMaterial.material = Material.id where exam = :id');
         $query->execute(array('id' => $this->id));
         $rows = $query->fetchAll();
@@ -99,6 +99,8 @@ class Exam extends BaseModel {
 
         foreach ($rows as $row) {
             $exammaterials[] = array(
+                'exam' => $row['exam'],
+                'material' => $row['material'],
                 'limitation' => $row['limitation'],
                 'pages' => $row['pages'],
                 'topic' => $row['topic'],

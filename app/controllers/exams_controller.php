@@ -7,7 +7,7 @@ class ExamController extends BaseController {
         $exams = Exam::all($_SESSION['user']);
         $examMaterials = array();
         foreach ($exams as $exam) {
-            $materials = $exam->findmaterial();
+            $materials = $exam->findExamMaterials();
             $examMaterials = array_merge($examMaterials, $materials);
         }
         View::make('exam/list.html', array('exams' => $exams, 'examMaterials' => $examMaterials));
@@ -16,7 +16,7 @@ class ExamController extends BaseController {
     public static function show($id) {
         self::check_logged_in();
         $exam = Exam::find($id);
-        $examMaterials = $exam->findmaterial();
+        $examMaterials = $exam->findExamMaterials();
         View::make('exam/show.html', array('exam' => $exam, 'examMaterials' => $examMaterials));
     }
 
