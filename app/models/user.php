@@ -2,7 +2,7 @@
 
 class User extends BaseModel {
 
-    public $id, $name, $password, $teacher;
+    public $id, $username, $password, $teacher;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -45,6 +45,13 @@ class User extends BaseModel {
         }
 
         return null;
+    }
+    
+    public function save(){
+        $query = DB::connection()->prepare('INSERT INTO Person (username, password) VALUES (:username, :password) RETURNING id');
+        $query->execute(array('username' => $this->username, 'password' => $this->password));
+        $row = $query->fetch();
+        $this->id = $row['id'];
     }
 
 }

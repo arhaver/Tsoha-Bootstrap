@@ -86,3 +86,11 @@ $routes->post('/material/:id/destroy', function($id) {
 $routes->post('/logout', function() {
     UserController::logout();
 });
+
+$routes->get('/register', function() {
+    UserController::add_user();
+});
+
+$routes->post('/register', function() {
+    UserController::store();
+});

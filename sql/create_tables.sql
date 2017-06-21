@@ -1,7 +1,7 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Person(
     id SERIAL PRIMARY KEY,
-    name varchar(25) NOT NULL,
+    username varchar(25) NOT NULL,
     password varchar(25) NOT NULL,
     teacher boolean DEFAULT FALSE
 );
