@@ -25,7 +25,7 @@ CREATE TABLE Material(
 );
 
 CREATE TABLE ExamMaterial(
-    exam INTEGER REFERENCES Exam(id),
+    exam INTEGER REFERENCES Exam(id) ON DELETE CASCADE,
     material INTEGER REFERENCES Material(id),
     limitation varchar(120),
     pages INTEGER NOT NULL,

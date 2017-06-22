@@ -61,6 +61,18 @@ class Material extends BaseModel {
         $query = DB::connection()->prepare('DELETE FROM Material WHERE id = :id');
         $query->execute(array('id' => $this->id));
     }
+    
+    public function can_be_deleted(){
+        $query = DB::connection()->prepare('SELCET * FROM ExamMaterial WHERE material = :material');
+        $query->execute(array('material' => $this->id));
+        $row = $query->fetch();
+        
+        if ($row) {
+            return false;
+        }
+        
+        return true;
+    }
 
     public function update() {
         $query = DB::connection()->prepare('UPDATE Material SET topic = :topic, writer = :writer, kind = :kind, lang = :lang, info = :info WHERE id = :id');
