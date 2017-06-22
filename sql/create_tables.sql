@@ -2,7 +2,7 @@
 CREATE TABLE Person(
     id SERIAL PRIMARY KEY,
     username varchar(25) NOT NULL,
-    password varchar(25) NOT NULL,
+    password varchar(25) NOT NULL
 );
 
 CREATE TABLE Exam(
@@ -12,7 +12,7 @@ CREATE TABLE Exam(
     testdate date NOT NULL,
     testtime time,
     room varchar(120),
-    tester varchar(120),
+    tester varchar(120)
 );
 
 CREATE TABLE Material(
