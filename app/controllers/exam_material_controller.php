@@ -8,7 +8,7 @@ class ExamMaterialController extends BaseController {
 
         $material = Material::find_by_topic($params['material']);
 
-        if (material == null) {
+        if ($material == null) {
             $errors = array();
             $errors[] = 'Materiaalia ei löytynyt!';
             $attributes = array (
