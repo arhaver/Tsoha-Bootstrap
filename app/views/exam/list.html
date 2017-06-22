@@ -35,13 +35,17 @@
             <td>{{exam.room}}</td>
             <td><ul>
                     {% for material in examMaterials %}
-                        {% if material.exam == exam.id %}
-                            <li>{{material.topic}}</li>
-                        {% endif %}
+                    {% if material.exam == exam.id %}
+                    <li>{{material.topic}}</li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </td>
-            <th><a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{exam.id}}/edit">Muokkaa</a></th>
+            <th>
+                {{forms.destroy_button("#{base_path}/exam/#{exam.id}/destroy")}}
+                <a class="btn btn-default btn-sm" href="{{base_path}}/exam/{{exam.id}}/edit">Muokkaa</a> <br>
+                <a href="{{base_path}}/exam/{{exam.id}}/addmaterial" class="btn btn-default">Liitä materiaali</a>
+            </th>
         </tr>
         {% endfor %}
     </tbody>

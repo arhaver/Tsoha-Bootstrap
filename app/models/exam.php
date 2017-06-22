@@ -72,15 +72,15 @@ class Exam extends BaseModel {
         if (!parent::validate_string_length($this->topic, $topic_length_min)) {
             $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
         }
-        
+
         if (parent::validate_string_length($this->topic, $topic_length_max + 1)) {
             $errors[] = 'Nimi saa olla korkeintaan ' . $topic_length_max . ' merkkiä!';
         }
 
         return $errors;
     }
-    
-    public function validate_date(){
+
+    public function validate_date() {
         $errors = array();
         $date_min = date_create("now");
         $examdate = date_create_from_format('Y-m-d', $this->testdate);
@@ -90,29 +90,28 @@ class Exam extends BaseModel {
         }
         if (!$examdate) {
             $errors[] = 'Päivämäärän tulee olla muodossa yyyy-m-d';
-        }
-        elseif ($date_min > $examdate){
+        } elseif ($date_min > $examdate) {
             $errors[] = 'Tentin päivämäärän pitää olla tulevaisuudessa!';
         }
         return $errors;
     }
-    
-    public function validate_time(){
+
+    public function validate_time() {
         $errors = array();
         $examtime_max = date_create_from_format('H:i', '24:00');
         $examtime = date_create_from_format('H:i', $this->testtime);
-        
+
         if (parent::string_is_empty($this->testtime)) {
             $this->testtime = '0:00';
-        }elseif (!$examtime) {
+        } elseif (!$examtime) {
             $errors[] = 'Ajan tulee olla muodossa hh:mm';
-        }elseif ($examtime > $examtime_max) {
+        } elseif ($examtime > $examtime_max) {
             $errors[] = 'Ajan tulee olla 0:00 ja 24:00 välillä!';
         }
-        
+
         return $errors;
     }
-    
+
     public function validate_room() {
         $errors = array();
         $room_length_max = 120;
@@ -123,7 +122,7 @@ class Exam extends BaseModel {
 
         return $errors;
     }
-    
+
     public function validate_tester() {
         $errors = array();
         $tester_length_max = 120;
@@ -144,8 +143,8 @@ class Exam extends BaseModel {
         $query = DB::connection()->prepare('UPDATE Exam SET topic = :topic, testdate = :testdate, testtime = :testtime, room = :room, tester = :tester WHERE id = :id');
         $query->execute(array('topic' => $this->topic, 'testdate' => $this->testdate, 'testtime' => $this->testtime, 'room' => $this->room, 'tester' => $this->tester, 'id' => $this->id));
     }
-    
-    public function findExamMaterials(){
+
+    public function findExamMaterials() {
         $query = DB::connection()->prepare('SELECT * FROM ExamMaterial INNER JOIN Material ON ExamMaterial.material = Material.id where exam = :id');
         $query->execute(array('id' => $this->id));
         $rows = $query->fetchAll();

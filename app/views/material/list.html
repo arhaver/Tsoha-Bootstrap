@@ -32,7 +32,10 @@
             <td>{{material.writer}}</td>
             <td>{{material.kind}}</td>
             <td>{{material.lang}}</td>
-            <th><a class="btn btn-default btn-sm" href="{{base_path}}/material/{{material.id}}/edit">Muokkaa</a></th>
+            <th>
+                {{forms.destroy_button("#{base_path}/material/#{material.id}/destroy")}}
+                <a class="btn btn-default btn-sm" href="{{base_path}}/material/{{material.id}}/edit">Muokkaa</a>
+            </th>
         </tr>
         {% endfor %}
     </tbody>

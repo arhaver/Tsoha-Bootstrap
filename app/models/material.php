@@ -88,7 +88,7 @@ class Material extends BaseModel {
 
         return null;
     }
-    
+
     public function validate_topic() {
         $errors = array();
         $topic_length_min = 3;
@@ -100,14 +100,14 @@ class Material extends BaseModel {
         if (!parent::validate_string_length($this->topic, $topic_length_min)) {
             $errors[] = 'Nimen pitää olla vähintään ' . $topic_length_min . ' merkkiä!';
         }
-        
+
         if (parent::validate_string_length($this->topic, $topic_length_max + 1)) {
             $errors[] = 'Nimi saa olla korkeintaan ' . $topic_length_max . ' merkkiä!';
         }
 
         return $errors;
     }
-    
+
     public function validate_writer() {
         $errors = array();
         $writer_length_max = 120;
@@ -118,7 +118,7 @@ class Material extends BaseModel {
 
         return $errors;
     }
-    
+
     public function validate_kind() {
         $errors = array();
         $kind_length_max = 25;
@@ -129,7 +129,7 @@ class Material extends BaseModel {
 
         return $errors;
     }
-    
+
     public function validate_lang() {
         $errors = array();
         $lang_length_max = 25;
@@ -140,7 +140,7 @@ class Material extends BaseModel {
 
         return $errors;
     }
-    
+
     public function validate_info() {
         $errors = array();
         $info_length_max = 250;

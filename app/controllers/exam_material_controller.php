@@ -11,11 +11,11 @@ class ExamMaterialController extends BaseController {
         if ($material == null) {
             $errors = array();
             $errors[] = 'Materiaalia ei löytynyt!';
-            $attributes = array (
+            $attributes = array(
                 'limitation' => $params['limitation'],
                 'pages' => $params['pages']
             );
-            
+
             $exam = Exam::find($id);
             $materials = Material::all();
             View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials, 'errors' => $errors));
