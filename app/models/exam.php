@@ -23,8 +23,7 @@ class Exam extends BaseModel {
                 'testdate' => $row['testdate'],
                 'testtime' => $row['testtime'],
                 'room' => $row['room'],
-                'tester' => $row['tester'],
-                'publicity' => $row['publicity']
+                'tester' => $row['tester']
             ));
         }
 
@@ -44,8 +43,7 @@ class Exam extends BaseModel {
                 'testdate' => $row['testdate'],
                 'testtime' => $row['testtime'],
                 'room' => $row['room'],
-                'tester' => $row['tester'],
-                'publicity' => $row['publicity']
+                'tester' => $row['tester']
             ));
 
             return $exam;

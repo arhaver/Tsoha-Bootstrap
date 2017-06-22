@@ -3,7 +3,6 @@ CREATE TABLE Person(
     id SERIAL PRIMARY KEY,
     username varchar(25) NOT NULL,
     password varchar(25) NOT NULL,
-    teacher boolean DEFAULT FALSE
 );
 
 CREATE TABLE Exam(
@@ -14,7 +13,6 @@ CREATE TABLE Exam(
     testtime time,
     room varchar(120),
     tester varchar(120),
-    publicity boolean DEFAULT FALSE
 );
 
 CREATE TABLE Material(
@@ -32,10 +30,4 @@ CREATE TABLE ExamMaterial(
     limitation varchar(120),
     pages INTEGER NOT NULL,
     PRIMARY KEY (exam, material)
-);
-
-CREATE TABLE Testee(
-    exam INTEGER REFERENCES Exam(id),
-    person INTEGER REFERENCES Person(id),
-    PRIMARY KEY (exam, person)
 );

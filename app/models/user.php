@@ -18,8 +18,7 @@ class User extends BaseModel {
             $user = new User(array(
                 'id' => $row['id'],
                 'username' => $row['username'],
-                'password' => $row['password'],
-                'teacher' => $row['teacher']
+                'password' => $row['password']
             ));
 
             return $user;
@@ -37,8 +36,7 @@ class User extends BaseModel {
             $user = new Exam(array(
                 'id' => $row['id'],
                 'username' => $row['username'],
-                'password' => $row['password'],
-                'teacher' => $row['teacher']
+                'password' => $row['password']
             ));
 
             return $user;
