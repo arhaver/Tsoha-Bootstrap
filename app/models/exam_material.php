@@ -12,11 +12,9 @@ class ExamMaterial extends BaseModel {
     public function validate_id() {
         $errors = array();
         
-        $query = DB::connection()->prepare('SELECT * FROM ExamMaterial WHERE exam = :exam AND material = :material');
-        $query->execute(array('exam' => $this->exam, 'material' => $this->material));
-        $row = $query->fetch();
+        $examMaterial = self::find($this->exam, $this->material);
 
-        if ($row) {
+        if (!$examMaterial == null) {
             $errors[] = 'Materiaali on jo liitetty tähän tenttiin.';
         }
         
@@ -49,6 +47,25 @@ class ExamMaterial extends BaseModel {
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO ExamMaterial (exam, material, limitation, pages) VALUES (:exam, :material, :limitation, :pages)');
         $query->execute(array('exam' => $this->exam, 'material' => $this->material, 'limitation' => $this->limitation, 'pages' => $this->pages));
+    }
+    
+    public static function find($exam, $material) {
+        $query = DB::connection()->prepare('SELECT * FROM ExamMaterial WHERE exam = :exam AND material = :material');
+        $query->execute(array('exam' => $$exam, 'material' => $material));
+        $row = $query->fetch();
+
+        if ($row) {
+            $examMaterial = new ExamMaterial(array(
+                'exam' => $exam,
+                'material' => $material,
+                'limitation' => $row['limitation'],
+                'pages' => $row['pages']
+            ));
+            
+            return $examMaterial;
+        }
+        
+        return null;
     }
 
 }
