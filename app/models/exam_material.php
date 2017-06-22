@@ -51,7 +51,7 @@ class ExamMaterial extends BaseModel {
     
     public static function find($exam, $material) {
         $query = DB::connection()->prepare('SELECT * FROM ExamMaterial WHERE exam = :exam AND material = :material');
-        $query->execute(array('exam' => $$exam, 'material' => $material));
+        $query->execute(array('exam' => $exam, 'material' => $material));
         $row = $query->fetch();
 
         if ($row) {
