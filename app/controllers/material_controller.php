@@ -79,7 +79,7 @@ class MaterialController extends BaseController {
 
             Redirect::to('/material', array('message' => 'Materiaali on poistettu onnistuneesti!'));
         } else {
-            Redirect::to('/material/' . $id, array('errors' => 'Materiaali on liitetty tentteihin, joten sitä ei voi poistaa.'));
+            Redirect::to('/material/' . $id, array('error' => 'Materiaali on liitetty tentteihin, joten sitä ei voi poistaa!'));
         }
     }
 
