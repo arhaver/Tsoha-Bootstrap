@@ -24,7 +24,7 @@ class UserController extends BaseController {
         $_SESSION['user'] = null;
         Redirect::to('/', array('message' => 'Olet kirjautunut ulos!'));
     }
-    
+
     public static function store() {
         $params = $_POST;
 
@@ -34,20 +34,19 @@ class UserController extends BaseController {
         ));
 
         $user = new User($attributes);
-//        $errors = $user->errors();
+        $errors = $user->errors();
 
-//        if (count($errors) == 0) {
+        if (count($errors) == 0) {
             $user->save();
 
             Redirect::to('/', array('message' => 'Rekisteröityminen onnistui!'));
-//        } else {
-//            View::make('user/register.html', array('errors' => $errors, 'attributes' => $attributes));
-//        }
+        } else {
+            View::make('user/register.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 
     public static function add_user() {
         View::make('user/register.html');
-        
     }
 
 }
