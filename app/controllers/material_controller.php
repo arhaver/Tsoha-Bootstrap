@@ -73,11 +73,11 @@ class MaterialController extends BaseController {
         self::check_logged_in();
         $material = new Material(array('id' => $id));
         $ok_to_delete = $material->can_be_deleted();
-        
-        if ($ok_to_delete){
-        $material->destroy();
 
-        Redirect::to('/material', array('message' => 'Materiaali on poistettu onnistuneesti!'));
+        if ($ok_to_delete) {
+            $material->destroy();
+
+            Redirect::to('/material', array('message' => 'Materiaali on poistettu onnistuneesti!'));
         } else {
             Redirect::to('/material/' . $id, array('errors' => 'Materiaali on liitetty tentteihin, joten sitä ei voi poistaa.'));
         }
