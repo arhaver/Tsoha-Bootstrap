@@ -8,24 +8,37 @@ class ExamMaterialController extends BaseController {
 
         $material = Material::find_by_topic($params['material']);
 
-        $attributes = (array(
-            'exam' => $id,
-            'material' => $material->id,
-            'limitations' => $params['limitations'],
-            'pages' => $params['pages']
-        ));
-
-        $examMaterial = new ExamMaterial($attributes);
-        $errors = $examMaterial->errors();
-
-        if (count($errors) == 0) {
-            $examMaterial->save();
-
-            Redirect::to('/exam/' . $id, array('message' => 'Materiaali on liitetty tenttiin!'));
-        } else {
+        if (material == null) {
+            $errors = array();
+            $errors[] = 'Materiaalia ei löytynyt!';
+            $attributes = array (
+                'limitation' => $params['limitation'],
+                'pages' => $params['pages']
+            );
+            
             $exam = Exam::find($id);
             $materials = Material::all();
-            View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials, 'errors' => $errors, 'attributes' => $attributes));
+            View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials, 'errors' => $errors));
+        } else {
+            $attributes = array(
+                'exam' => $id,
+                'material' => $material->id,
+                'limitation' => $params['limitation'],
+                'pages' => $params['pages']
+            );
+
+            $examMaterial = new ExamMaterial($attributes);
+            $errors = $examMaterial->errors();
+
+            if (count($errors) == 0) {
+                $examMaterial->save();
+
+                Redirect::to('/exam/' . $id, array('message' => 'Materiaali on liitetty tenttiin!'));
+            } else {
+                $exam = Exam::find($id);
+                $materials = Material::all();
+                View::make('exam/addmaterial.html', array('exam' => $exam, 'materials' => $materials, 'errors' => $errors, 'attributes' => $attributes));
+            }
         }
     }
 

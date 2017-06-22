@@ -6,7 +6,21 @@ class ExamMaterial extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_limitations', 'validate_pages');
+        $this->validators = array('validate_id', 'validate_limitations', 'validate_pages');
+    }
+    
+    public function validate_id() {
+        $errors = array();
+        
+        $query = DB::connection()->prepare('SELECT * FROM ExamMaterial WHERE exam = :exam AND material = :material');
+        $query->execute(array('exam' => $this->exam, 'material' => $this->material));
+        $row = $query->fetch();
+
+        if ($row) {
+            $errors[] = 'Materiaali on jo liitetty tähän tenttiin.';
+        }
+        
+        return $errors;
     }
     
     public function validate_limitations(){
