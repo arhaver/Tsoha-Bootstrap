@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if user_logged_in%}
 <h1>Materiaalit</h1>
-{% endif %}
 
+{% if message %}
 <div class="alert alert-success">
-  {{message}}
+    {{message}}
 </div>
+{% endif %}
 
 <p>
     <a href="{{base_path}}/material/new" class="btn btn-success">Lisää materiaali</a>

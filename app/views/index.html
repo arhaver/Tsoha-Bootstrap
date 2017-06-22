@@ -3,6 +3,12 @@
 <h1>Lukusuunnitelma-apuri</h1>
 <h3>Kirjaudu sisään</h3>
 
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+
 <form method="post" action="{{base_path}}/login">
     <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">

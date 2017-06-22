@@ -3,9 +3,11 @@
 {% import "macros/forms.html" as forms %}
 <h1>{{material.topic}}</h1>
 
+{% if message %}
 <div class="alert alert-success">
     {{message}}
 </div>
+{% endif %}
 
 <!-- Painikkeet tähän -->
 <p>
